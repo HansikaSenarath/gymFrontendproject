@@ -1,21 +1,42 @@
-# Fitness Sport Centre — Gym Frontend
+# PowerFit Gym — Frontend
 
-A modern, responsive gym landing page built with React, TypeScript, and Tailwind CSS. Features smooth animations, a contact inquiry form, and a clean component-driven architecture.
+> A modern, fully responsive gym landing page built with React 18 and TypeScript.
+
+🔗 **Live Demo:** [gym-frontendproject.vercel.app](https://gym-frontendproject.vercel.app)
+
+---
+
+## Overview
+
+PowerFit Gym is a single-page application for a fitness centre. It showcases the gym's services, trainers, and values, and includes a contact inquiry form that submits to a backend API.
+
+---
+
+## Features
+
+- Animated hero section with key stats (500+ members, 50+ trainers, 24/7 access)
+- About section with scroll-triggered animations
+- Services section with category filtering (Strength, Cardio, Yoga, Group Classes)
+- Contact form with real-time validation and API submission
+- Toast feedback for form success/error states
+- Fully responsive across mobile, tablet, and desktop
+- Dark/light theme support via CSS custom properties
 
 ---
 
 ## Tech Stack
 
-- [React 18](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- [Vite 6](https://vitejs.dev/) — build tool & dev server
-- [Tailwind CSS 4](https://tailwindcss.com/) — utility-first styling
-- [Motion (Framer Motion)](https://motion.dev/) — animations
-- [Radix UI](https://www.radix-ui.com/) — accessible UI primitives
-- [MUI (Material UI)](https://mui.com/) — additional UI components
-- [Lucide React](https://lucide.dev/) — icons
-- [Sonner](https://sonner.emilkowal.ski/) — toast notifications
-- [Axios](https://axios-http.com/) — HTTP client
-- [React Hook Form](https://react-hook-form.com/) — form handling
+| Layer | Technology |
+|---|---|
+| Framework | React 18 + TypeScript |
+| Build Tool | Vite 6 |
+| Styling | Tailwind CSS 4 |
+| Animations | Motion (Framer Motion) |
+| UI Primitives | Radix UI + shadcn/ui |
+| Icons | Lucide React |
+| HTTP Client | Axios |
+| Notifications | Sonner |
+| Deployment | Vercel |
 
 ---
 
@@ -23,22 +44,20 @@ A modern, responsive gym landing page built with React, TypeScript, and Tailwind
 
 ```
 src/
-├── app/
-│   └── components/
-│       ├── figma/          # Figma-generated components (e.g. ImageWithFallback)
-│       └── ui/             # shadcn/ui component library
-├── assets/                 # Static assets (images, logo)
+├── app/components/
+│   ├── figma/          # ImageWithFallback and Figma-generated components
+│   └── ui/             # shadcn/ui component library
+├── assets/             # Static assets and logo
 ├── components/
-│   ├── layout/             # Navbar, Footer
-│   └── ui/                 # Shared UI components (Button, Card, Input, SectionTitle)
-├── data/                   # Static data (services, trainers)
-├── hooks/                  # Custom React hooks (useInquiry)
-├── pages/                  # Page-level components (Home)
-├── sections/
-│   └── home/               # Page sections (Hero, About, Services, Contact)
-├── services/               # API client & inquiry service
-├── styles/                 # Global styles, Tailwind config, theme tokens
-└── utils/                  # Helper utilities
+│   ├── layout/         # Navbar, Footer
+│   └── ui/             # Shared components: Button, Card, Input, SectionTitle
+├── data/               # Static data: servicesData, trainersData
+├── hooks/              # Custom hooks (useInquiry)
+├── pages/              # Page components (Home)
+├── sections/home/      # Page sections: Hero, About, Services, Contact
+├── services/           # apiClient (Axios) + inquiryService
+├── styles/             # Global CSS, Tailwind config, theme tokens
+└── utils/              # Helper functions
 ```
 
 ---
@@ -54,26 +73,26 @@ src/
 
 ```bash
 npm install
-# or
-pnpm install
 ```
 
 ### Environment Variables
 
-Create a `.env` file in the root (or copy the existing one):
+Create a `.env` file in the project root:
 
 ```env
-# Backend API base URL — leave empty to use simulated/mock requests
-VITE_API_URL=your-backend-url-here
+# Backend API base URL
+VITE_API_URL=https://your-backend-url.railway.app
 ```
 
-### Development
+> If `VITE_API_URL` is left empty, the API client falls back to `http://localhost:5000`.
+
+### Run Locally
 
 ```bash
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`.
+App runs at `http://localhost:5173`.
 
 ### Production Build
 
@@ -81,28 +100,12 @@ The app will be available at `http://localhost:5173`.
 npm run build
 ```
 
-Output is generated in the `dist/` folder.
+Output is generated in the `dist/` folder, ready for deployment.
 
 ---
 
-## Features
+## Deployment
 
-- Hero section with animated stats and call-to-action
-- About section highlighting gym values and experience
-- Services section showcasing available programs
-- Contact form with inquiry submission to backend API
-- Responsive design across all screen sizes
-- Smooth scroll-triggered animations via Motion
-- Toast notifications for form feedback
+The frontend is deployed on **Vercel**. Any push to the main branch triggers an automatic deployment.
 
----
 
-## API Integration
-
-The contact form submits inquiries via `src/services/inquiryService.ts` using Axios. Set `VITE_API_URL` in `.env` to point to your backend. If left empty, requests are simulated locally.
-
----
-
-## License
-
-This project is private. All rights reserved.
